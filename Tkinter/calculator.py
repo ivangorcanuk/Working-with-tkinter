@@ -64,9 +64,10 @@ def press_key(event):
     print(event)
 
 win = tk.Tk() # создаем окно
-win.geometry(f'240x270+100+200')  # указываем размеры
+win.geometry(f'240x271+100+200')  # указываем размеры
 win['bg'] = '#33ffe6'  # задаем цвет фона
 win.title('Calculator')  # называем окно
+win.resizable(False, False)  # запретить растягивать окно, убрать кнопку развернуть
 
 win.bind('<Key>', press_key)  # обрабатываем события (<Key> тип событий - любое нажатие на клавишу, вызываем функцию, которая обработает это событие)
 
@@ -75,35 +76,35 @@ win.bind('<Key>', press_key)  # обрабатываем события (<Key> �
 calc = tk.Entry(win, justify=tk.RIGHT, font=('Arial',15), width=15)  # создаем экземпляр класса Entry. justify текст при вводе прижимается к правой стороне, а не к левой. font изменили шрифт строки ввода, width ограничение на 15 символов
 calc.insert(0, '0')  # добавили 0 в строку ввода
 calc['state'] = tk.DISABLED  # состояние строки установили неактивным, теперь нельзя поставить курсор
-calc.grid(row=0, column=0, columnspan=4, sticky='we',  padx=5)  # создаем таблицу(адрес первой ячейки, ряд по горизонтали=0, и по вертикали=0. Объеденили 4 колонки)
+calc.grid(row=0, column=0, columnspan=4, sticky='we', padx=5, pady=2)  # создаем таблицу(адрес первой ячейки, ряд по горизонтали=0, и по вертикали=0. Объеденили 4 колонки)
 
 """Кнопки с цифрами"""
 
-make_digit_button('1').grid(row=1, column=0, sticky='wens', padx=5, pady=5)  # sticky растянули кнопки на Св, Юг, Зп, Вс.
-make_digit_button('2').grid(row=1, column=1, sticky='wens', padx=5, pady=5)  # padx, pady добавили отступы между кнопками по x и y
-make_digit_button('3').grid(row=1, column=2, sticky='wens', padx=5, pady=5)  # bd добавили рамки для кнопок
-make_digit_button('4').grid(row=2, column=0, sticky='wens', padx=5, pady=5)  # вызываем lambda, которая вызывает функцию add_digit, она дает кнопкам свой символ при нажатии на нее
-make_digit_button('5').grid(row=2, column=1, sticky='wens', padx=5, pady=5)
-make_digit_button('6').grid(row=2, column=2, sticky='wens', padx=5, pady=5)
-make_digit_button('7').grid(row=3, column=0, sticky='wens', padx=5, pady=5)
-make_digit_button('8').grid(row=3, column=1, sticky='wens', padx=5, pady=5)
-make_digit_button('9').grid(row=3, column=2, sticky='wens', padx=5, pady=5)
-make_digit_button('0').grid(row=4, column=0, sticky='wens', padx=5, pady=5)
+make_digit_button('1').grid(row=1, column=0, sticky='wens', padx=2, pady=2)  # sticky растянули кнопки на Св, Юг, Зп, Вс.
+make_digit_button('2').grid(row=1, column=1, sticky='wens', padx=2, pady=2)  # padx, pady добавили отступы между кнопками по x и y
+make_digit_button('3').grid(row=1, column=2, sticky='wens', padx=2, pady=2)  # bd добавили рамки для кнопок
+make_digit_button('4').grid(row=2, column=0, sticky='wens', padx=2, pady=2)  # вызываем lambda, которая вызывает функцию add_digit, она дает кнопкам свой символ при нажатии на нее
+make_digit_button('5').grid(row=2, column=1, sticky='wens', padx=2, pady=2)
+make_digit_button('6').grid(row=2, column=2, sticky='wens', padx=2, pady=2)
+make_digit_button('7').grid(row=3, column=0, sticky='wens', padx=2, pady=2)
+make_digit_button('8').grid(row=3, column=1, sticky='wens', padx=2, pady=2)
+make_digit_button('9').grid(row=3, column=2, sticky='wens', padx=2, pady=2)
+make_digit_button('0').grid(row=4, column=0, sticky='wens', padx=2, pady=2)
 
 """Кнопки с операциями"""
 
-make_operation_button('+').grid(row=1, column=3, sticky='wens', padx=5, pady=5)
-make_operation_button('-').grid(row=2, column=3, sticky='wens', padx=5, pady=5)
-make_operation_button('*').grid(row=3, column=3, sticky='wens', padx=5, pady=5)
-make_operation_button('/').grid(row=4, column=3, sticky='wens', padx=5, pady=5)
+make_operation_button('+').grid(row=1, column=3, sticky='wens', padx=2, pady=2)
+make_operation_button('-').grid(row=2, column=3, sticky='wens', padx=2, pady=2)
+make_operation_button('*').grid(row=3, column=3, sticky='wens', padx=2, pady=2)
+make_operation_button('/').grid(row=4, column=3, sticky='wens', padx=2, pady=2)
 
 """Кнопка подсчитывания"""
 
-make_calc_button('=').grid(row=4, column=2, sticky='wens', padx=5, pady=5)
+make_calc_button('=').grid(row=4, column=2, sticky='wens', padx=2, pady=2)
 
 """Кнопка рефреш"""
 
-make_clear_button('c').grid(row=4, column=1, sticky='wens', padx=5, pady=5)
+make_clear_button('c').grid(row=4, column=1, sticky='wens', padx=2, pady=2)
 
 win.grid_columnconfigure(0, minsize=60)  # задаем минимальный размер колонки
 win.grid_columnconfigure(1, minsize=60)
